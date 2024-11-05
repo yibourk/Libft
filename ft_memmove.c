@@ -1,17 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isprint.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yibourk <yibourk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 23:32:51 by yibourk           #+#    #+#             */
-/*   Updated: 2024/11/04 23:32:51 by yibourk          ###   ########.fr       */
+/*   Created: 2024/11/05 13:28:38 by yibourk           #+#    #+#             */
+/*   Updated: 2024/11/05 13:28:38 by yibourk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isprint(int c){
-	if (c >= 32 && c <= 126)
-		return (1);
-	return (0);
+void	*ft_memmove(void *dest, const void *src, size_t n){
+	if (dest < src)
+		while (n--)
+			dest[n] = src[n];
+	else
+		if (!n || dest == src)
+			return (dest);
+		while (n--)
+			*dest++ = *src++;
+	return (dest);
 }
