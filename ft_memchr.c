@@ -1,23 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yibourk <yibourk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/04 22:42:37 by yibourk           #+#    #+#             */
-/*   Updated: 2024/11/04 22:42:37 by yibourk          ###   ########.fr       */
+/*   Created: 2024/11/07 16:17:25 by yibourk           #+#    #+#             */
+/*   Updated: 2024/11/07 16:17:25 by yibourk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "libft.h"
 
-size_t	ft_strlen(const char *s)
-{
+void	*ft_memchr(const void *s, int c, size_t n){
 	size_t	i;
+	const char	*temp;
 
 	i = 0;
-	while (s[i])
+	temp = (const char *)s;
+	while (i < n)
+	{
+		if (temp[i] == (char)c)
+			return ((void *)(s + i));
 		i++;
-	return (i);
+	}
+	return (NULL);
 }
