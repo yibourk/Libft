@@ -6,12 +6,13 @@
 /*   By: yibourk <yibourk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/05 12:54:04 by yibourk           #+#    #+#             */
-/*   Updated: 2024/11/05 12:54:04 by yibourk          ###   ########.fr       */
+/*   Updated: 2024/11/11 09:14:38 by yibourk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "libft.h"
+#include "libft.h"
 
-void	ft_bzero(void *s, size_t n){
+void	ft_bzero(void *s, size_t n)
+{
 	ft_memset(s, 0, n);
 }
