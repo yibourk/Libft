@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: yibourk <yibourk@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/11/07 16:17:25 by yibourk           #+#    #+#             */
-/*   Updated: 2024/11/07 16:17:25 by yibourk          ###   ########.fr       */
+/*   Created: 2024/11/13 19:43:37 by yibourk           #+#    #+#             */
+/*   Updated: 2024/11/13 19:43:37 by yibourk          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+void	ft_putchar_fd(char c, int fd)
 {
-	size_t		i;
-	const char	*temp;
-
-	i = 0;
-	temp = (const char *)s;
-	while (i < n)
-	{
-		if (temp[i] == (char)c)
-			return ((void *)(s + i));
-		i++;
-	}
-	return (NULL);
+	write(fd, &c, 1);
 }
