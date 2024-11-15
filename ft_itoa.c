@@ -12,50 +12,45 @@
 
 #include "libft.h"
 
-static int
-	ft_abs(int nbr)
+static size_t	ft_intlen(int n)
 {
-	return ((nbr < 0) ? -nbr : nbr);
-}
+	size_t	len;
 
-static void
-	ft_strrev(char *str)
-{
-	size_t	length;
-	size_t	i;
-	char	tmp;
-
-	length = ft_strlen(str);
-	i = 0;
-	while (i < length / 2)
-	{
-		tmp = str[i];
-		str[i] = str[length - i - 1];
-		str[length - i - 1] = tmp;
-		i++;
-	}
-}
-
-char
-	*ft_itoa(int n)
-{
-	char	*str;
-	int		is_neg;
-	size_t	length;
-
-	is_neg = (n < 0);
-	if (!(str = ft_calloc(11 + is_neg, sizeof(*str))))
-		return (NULL);
-	if (n == 0)
-		str[0] = '0';
-	length = 0;
+	len = 0;
+	if (n <= 0)
+		len++;
 	while (n != 0)
 	{
-		str[length++] = '0' + ft_abs(n % 10);
-		n = (n / 10);
+		n /= 10;
+		len++;
 	}
-	if (is_neg)
-		str[length] = '-';
-	ft_strrev(str);
-	return (str);
+	return (len);
+}
+
+char	*ft_itoa(int n)
+{
+	size_t	len;
+	int		is_negative;
+	char	*result;
+
+	len = ft_intlen(n);
+	is_negative = (n < 0);
+	if (n == 0)
+		return (ft_strdup("0"));
+	if (n == -2147483648)
+		return (ft_strdup("-2147483648"));
+	result = (char *)malloc((len + 1) * sizeof(char));
+	if (!result)
+		return (NULL);
+	result[len] = 0;
+	if (is_negative)
+		n = n * (-1);
+	while (len-- > 0)
+	{
+		result[len] = (n % 10) + '0';
+		n /= 10;
+	}
+	if (is_negative)
+		result[0] = '-';
+	return (result);
 }
